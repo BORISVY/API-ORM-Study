@@ -1,15 +1,19 @@
 from pydantic import BaseModel, EmailStr, Field
 
 class UserCreate(BaseModel):
-    name: str = Field(..., min_length=3, max_length=50)
+    username: str = Field(min_length=3, max_length=50)
     email: EmailStr
-    senha: str = Field(..., min_length=8)
+    password: str = Field(min_length=8)
 
 class UserResponse(BaseModel):
     id: int
-    name: str
+    username: str
     email: EmailStr
     active_status: bool = True
 
     class Config:
         from_attributes = True
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
