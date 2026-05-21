@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 from schemas.user_schema import UserCreate, UserResponse, LoginRequest
+import bcrypt
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
